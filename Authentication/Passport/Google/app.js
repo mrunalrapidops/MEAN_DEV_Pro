@@ -4,7 +4,8 @@ const app = express();
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
 const cookieSession = require('cookie-session');
-
+app.set('view engine','ejs');
+let fileScope;
 // cookieSession config
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000, // One day in milliseconds
@@ -27,11 +28,13 @@ passport.use(new GoogleStrategy({
 
 // Used to stuff a piece of information into a cookie
 passport.serializeUser((user, done) => {
+    fileScope = user;
     done(null, user);
 });
 
 // Used to decode the received cookie and persist session
 passport.deserializeUser((user, done) => {
+    console.log(user);
     done(null, user);
 });
 
@@ -61,7 +64,12 @@ app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => 
 
 // Secret route
 app.get('/secret', isUserAuthenticated, (req, res) => {
-    res.send('You have reached the secret route');
+    //res.send([fileScope.displayName,fileScope.photos[0].value,fileScope.provider]);
+    var img = `${fileScope.photos[0].value}`;
+    var someHTML = `<img src=${img} alt='Italian Trulli' width="100" height="100">`;
+    //res.write('<h1>HEllo</h1>');
+    //res.send(someHTML);//,[fileScope.displayName,fileScope.provider]);
+    res.render('profile',{fileScope:fileScope.displayName,image:img}); 
 });
 
 // Logout route

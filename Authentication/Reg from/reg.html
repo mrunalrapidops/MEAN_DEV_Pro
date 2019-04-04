@@ -4,12 +4,52 @@
 </head>
     </head>
 <body>
-    <form action="action_page.php">
+    <form action="/reg.html">
         <div class="container">
           <h1>Register</h1>
           
           <hr>
-      
+          <label for="Name"><b>Name</b></label>
+          <input type="text" placeholder="First" name="email" required>
+          <input type="text" placeholder="Middle" name="email" required>
+          <input type="text" placeholder="Last" name="email" required>
+          
+          <label for="Bod"><b>Birthdate</b></label>
+          <select>
+            <option value="volvo">Date</option>
+          </select>
+          <select>
+            <option value="volvo">Month</option>
+          </select>
+          <select>
+            <option value="volvo">Year</option>
+          </select>
+          <br> <br>
+
+          <label for="Bod"><b>Address</b></label>
+          <input type="text" placeholder="Enter Street Address" name="sa">
+          <input type="text" placeholder="ZipCode" name="sa">
+          <select>
+            <option value="volvo">city</option>
+          </select>
+          <select>
+            <option value="volvo">Country</option>
+          </select>
+          <br> <br>
+          <label for="Bod"><b>Mobile Number</b></label>
+          <input type="text" placeholder="Mobile Number" name="sa">
+           
+          <label for="Gender"><b>Gender</b></label><br>
+          <input type="radio" name="gender" value="male"> Male<br>
+          <input type="radio" name="gender" value="female"> Female<br>
+          <input type="radio" name="gender" value="other"> Other
+          <br> <br>
+          
+          <label for="Gender"><b>Hobby</b></label><br>
+          <input type="checkbox" name="vehicle1" value="Bike">Traveling<br>
+          <input type="checkbox" name="vehicle2" value="Car">Rading<br>
+          <input type="checkbox" name="vehicle3" value="Boat" checked>Gaming<br> 
+          <br> <br>
           <label for="email"><b>Email</b></label>
           <input type="text" placeholder="Enter Email" name="email" required>
       
@@ -18,9 +58,12 @@
       
           <label for="psw-repeat"><b>Repeat Password</b></label>
           <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-          <hr>
+    <br>
+    <label for="psw"><b>Message</b></label>
+      <textarea rows="4" cols="50">
       
-          <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+      </textarea> 
+    <br>
           <button type="submit" class="registerbtn">Register</button>
         </div>
       
